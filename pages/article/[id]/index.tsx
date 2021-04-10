@@ -7,29 +7,14 @@ type ArticleProp = {
   article: Article
 }
 
-const article = ({ article }: ArticleProp) => {
+const article = () => {
   const router = useRouter()
   const { id } = router.query
   return (
-    <>
-      <h1>Article is {id}</h1>
-      <br />
-      <Link href='/'>Go Back</Link>
-    </>
+    <div>
+      This is an article {id}
+    </div>
   )
-} 
-
-
-
-//
-// const article = () => {
-//   const router = useRouter()
-//   const { id } = router.query
-//   return (
-//     <div>
-//       This is an article {id}
-//     </div>
-//   )
-// }
+}
 
 export default article
