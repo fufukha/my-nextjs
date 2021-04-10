@@ -1,6 +1,5 @@
-import { server } from '../config'
-import Head from 'next/head'
 import ArticleList from '../components/ArticleList'
+import { server } from '../config'
 import { Article } from '../types/article-types'
 
 type HomeProps = {
@@ -10,10 +9,6 @@ type HomeProps = {
 const Home = ({ articles }: HomeProps) => {
   return (
     <div>
-      <Head>
-        <title>WebDev Newz</title>
-        <meta name='keywords' content='web development, programming'></meta>
-      </Head>
       <ArticleList articles={articles} />
     </div>
   )

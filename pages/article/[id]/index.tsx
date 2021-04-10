@@ -1,7 +1,8 @@
-import { server } from '../../../config'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { Article, IParams } from '../../../types/article-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
+import Meta from '../../../components/Meta'
+import { server } from '../../../config'
+import { Article, IParams } from '../../../types/article-types'
 
 type ArticleProp = {
   article: Article
@@ -10,6 +11,7 @@ type ArticleProp = {
 const article = ({ article }: ArticleProp) => {
   return (
     <>
+      <Meta title={article.title} description={article.excerpt} />
       <h1>{article.title}</h1>
       <p>{article.body}</p>
       <br />

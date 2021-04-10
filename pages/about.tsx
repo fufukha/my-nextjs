@@ -1,9 +1,12 @@
-const about = () => {
-	return (
-		<div>
-			<h1>About</h1>
-		</div>
-	);
-};
+import Meta from '../components/Meta'
 
-export default about;
+const about = () => {
+  return (
+    <div>
+      <Meta title='About' />
+      <h1>About</h1>
+    </div>
+  )
+}
+
+export default about
