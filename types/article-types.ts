@@ -1,9 +1,10 @@
 import { ParsedUrlQuery } from 'querystring'
 
 export interface Article {
-  userId: number
-  id: number
+  userId?: number | string
+  id: number | string
   title: string
+  excerpt?: string
   body: string
 }
 
