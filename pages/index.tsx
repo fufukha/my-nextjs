@@ -1,29 +1,31 @@
 import ArticleList from '../components/ArticleList'
-import { server } from '../config'
-import { Article } from '../types/article-types'
+import useSWR from 'swr'
 
-type HomeProps = {
-  articles: Article[]
-}
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
-const Home = ({ articles }: HomeProps) => {
+const Index = () => {
+  const { data, error } = useSWR('api/articles', fetcher)
+
+  if (error) return <div>Failed to load</div>
+  if (!data) return <div>Loading...</div>
+
   return (
     <div>
-      <ArticleList articles={articles} />
+      <ArticleList articles={data} />
     </div>
   )
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/articles`)
-  const articles: Article[] = await res.json()
+// export const getStaticProps = async () => {
+//   const res = await fetch(`${server}/api/articles`)
+//   const articles = await res.json()
 
-  return {
-    props: {
-      articles,
-    },
-  }
-}
+//   return {
+//     props: {
+//       articles,
+//     },
+//   }
+// }
 
 // export const getStaticProps = async () => {
 //   const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
@@ -36,4 +38,4 @@ export const getStaticProps = async () => {
 //   }
 // }
 
-export default Home
+export default Index
